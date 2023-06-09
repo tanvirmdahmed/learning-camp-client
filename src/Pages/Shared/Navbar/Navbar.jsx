@@ -66,7 +66,7 @@ const Navbar = () => {
                     </div>
                 }
                 {
-                    user ? <Link onClick={handleLogOut} className="btn bg-gradient-to-r from-[#2563EB] to-[#0949d2]  border-none hover:bg-[#0949d2]">Logout</Link> : <Link to='/login' className="btn bg-gradient-to-r from-[#2563EB] to-[#0949d2] border-none hover:bg-[#0949d2]">Login</Link>
+                    user ? <Link onClick={handleLogOut} className="btn bg-gradient-to-r from-[#C0966B] to-[#9f570f]  border-none text-zinc-50">Logout</Link> : <Link to='/login' className="btn bg-gradient-to-r from-[#aa6117] to-[#C0966B] border-none text-zinc-50">Login</Link>
                 }
                 {/* <Link to='/login' className="btn bg-gradient-to-r from-[#2563EB] to-[#0949d2] border-none hover:bg-[#0949d2] text-white">Login</Link> */}
             </div>
