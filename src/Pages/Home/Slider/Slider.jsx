@@ -19,7 +19,7 @@ const Slider = () => {
     };
 
     return (
-        <div className='h-[70vh]'>
+        <div className='h-[90vh] my-12'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -35,18 +35,29 @@ const Slider = () => {
                 onAutoplayTimeLeft={onAutoplayTimeLeft}
                 className="mySwiper rounded-lg"
             >
-                {/* <SwiperSlide>
-                    <img className='h-[60vh]' src="https://i.ibb.co/RY9cfzx/istockphoto-1263424631-612x612.jpg" alt="" />
-                </SwiperSlide> */}
                 <SwiperSlide>
-                    <img className='relative' src="https://i.ibb.co/bPMbc7C/Learning.jpg" alt="" />
-                    <h1 className='absolute'>hello bro how are you</h1>
+                    <img className='relative' src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZXhlcmNpc2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="" />
+                    <div className='absolute space-y-4'>
+                        <h1 className='text-white font-bold text-7xl'>MAKE YOUR SUMMER</h1>
+                        <p className='text-red-300 font-bold text-5xl'>Unforgettable!</p>
+                        <button className='btn btn-success btn-lg rounded-full'>Enroll Now</button>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="https://i.ibb.co/TWhYPBr/consejos-sacar-maximo-partido-elearning.jpg" alt="" />
+                    <img className='relative' src="https://i0.wp.com/studyinfitness.com/wp-content/uploads/2020/07/mor-shani-li4dxZ0KYRw-unsplash-scaled.jpg?fit=2560%2C1787&ssl=1" alt="" />
+                    <div className='absolute space-y-4'>
+                        <h1 className='text-white font-bold text-7xl'>MAKE YOUR SUMMER</h1>
+                        <p className='text-slate-300 font-bold text-5xl'>Unforgettable!</p>
+                        <button className='btn btn-success btn-lg rounded-full'>Enroll Now</button>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="https://i.ibb.co/R95PLqh/istockphoto-1271697681-612x612.jpg" alt="" />
+                    <img className='relative' src="https://images.healthshots.com/healthshots/en/uploads/2023/05/10200007/exercise.jpg" alt="" />
+                    <div className='absolute space-y-4'>
+                        <h1 className='text-white font-bold text-7xl'>MAKE YOUR SUMMER</h1>
+                        <p className='text-slate-300 font-bold text-5xl'>Unforgettable!</p>
+                        <button className='btn btn-success btn-lg rounded-full'>Enroll Now</button>
+                    </div>
                 </SwiperSlide>
 
                 <div className="autoplay-progress" slot="container-end">

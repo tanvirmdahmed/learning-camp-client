@@ -99,6 +99,9 @@ const Login = () => {
                                         <p className="text-red-600">{error}</p>
                                     </div>
                                 </div>
+                                <label className="label">
+                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                </label>
                                 <div className="form-control mt-6">
                                     <button className="btn btn-outline btn-primary">Login</button>
                                 </div>
@@ -112,7 +115,7 @@ const Login = () => {
                         </div>
                         <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
                             <div className='px-8 mt-8 mx-auto'>
-                                <button onClick={handleGoogleSignIn} className="btn btn-circle btn-lg btn-neutral border-none mb-4 gap-2"><FaGoogle></FaGoogle></button>
+                                <button onClick={handleGoogleSignIn} className="btn btn-circle btn-lg btn-outline mb-4 gap-2"><FaGoogle></FaGoogle></button>
                                 {/* <button onClick={handleGithubSignIn} className="btn btn-outline w-full mb-8 gap-2"><FaGithub></FaGithub> Register with GitHub</button> */}
                             </div>
                         </div>

@@ -1,0 +1,114 @@
+[
+    {
+        "className": "Yoga Class",
+        "classImage": "https://i.ibb.co/C9H6XCn/6172edae4f281c001296a1e7.jpg",
+        "instructorName": "John Doe",
+        "instructorEmail": "john.doe@example.com",
+        "availableSeats": 20,
+        "price": 10
+    },
+    {
+        "className": "Kickboxing Class",
+        "classImage": "https://i.ibb.co/bLvCHsB/shutterstock-341537039.jpg",
+        "instructorName": "Jane Smith",
+        "instructorEmail": "jane.smith@example.com",
+        "availableSeats": 15,
+        "price": 24
+    },
+    {
+        "className": "Pilates Class",
+        "classImage": "https://i.ibb.co/v3V9vYy/y-Jv-Wjcd5-Pilates-Studios-Hudson-Valley.jpg",
+        "instructorName": "Jane Smith",
+        "instructorEmail": "jane.smith@example.com",
+        "availableSeats": 15,
+        "price": 15
+    },
+    {
+        "className": "Zumba Class",
+        "classImage": "https://i.ibb.co/4jC3jWY/zumba-dance.jpg",
+        "instructorName": "Michael Johnson",
+        "instructorEmail": "michael.johnson@example.com",
+        "availableSeats": 30,
+        "price": 12
+    },
+    {
+        "className": "Kickboxing Class",
+        "classImage": "https://i.ibb.co/bLvCHsB/shutterstock-341537039.jpg",
+        "instructorName": "Sarah Williams",
+        "instructorEmail": "sarah.williams@example.com",
+        "availableSeats": 25,
+        "price": 18
+    },
+    {
+        "className": "Spin Class",
+        "classImage": "https://i.ibb.co/y52kBD9/spinning-class-benefits-and-challenges-fb.jpg",
+        "instructorName": "David Brown",
+        "instructorEmail": "david.brown@example.com",
+        "availableSeats": 10,
+        "price": 14
+    },
+    {
+        "className": "Barre Class",
+        "classImage": "https://i.ibb.co/YjKf2CF/best-barre-workouts-physique-57-870.jpg",
+        "instructorName": "Emily Davis",
+        "instructorEmail": "emily.davis@example.com",
+        "availableSeats": 20,
+        "price": 15
+    },
+    {
+        "className": "Boxing Class",
+        "classImage": "https://i.ibb.co/rcN4c4R/boxing-her-way-to-a-ripper-body-royalty-free-image-1580820552.jpg",
+        "instructorName": "Robert Wilson",
+        "instructorEmail": "robert.wilson@example.com",
+        "availableSeats": 20,
+        "price": 20
+    },
+    {
+        "className": "Barre Class",
+        "classImage": "https://i.ibb.co/YjKf2CF/best-barre-workouts-physique-57-870.jpg",
+        "instructorName": "Robert Wilson",
+        "instructorEmail": "robert.wilson@example.com",
+        "availableSeats": 0,
+        "price": 30
+    },
+    {
+        "className": "Piloxing Class",
+        "classImage": "https://i.ibb.co/CtnR7gy/c870x524.jpg",
+        "instructorName": "Jessica Turner",
+        "instructorEmail": "jessica.turner@example.com",
+        "availableSeats": 15,
+        "price": 12
+    },
+    {
+        "className": "Aerial Yoga Class",
+        "classImage": "https://i.ibb.co/XJW4ysP/earth-and-aerial-yoga-classes-hudson-ma-8.jpg",
+        "instructorName": "Ryan Mitchell",
+        "instructorEmail": "ryan.mitchell@example.com",
+        "availableSeats": 12,
+        "price": 16
+    },
+    {
+        "className": "Cardio Dance Class",
+        "classImage": "https://i.ibb.co/MgNphw2/102879a4f7b2f373a3218a4219a064a0.jpg",
+        "instructorName": "Ryan Mitchell",
+        "instructorEmail": "ryan.mitchell@example.com",
+        "availableSeats": 15,
+        "price": 18
+    },
+    {
+        "className": "Piloxing Class",
+        "classImage": "https://i.ibb.co/CtnR7gy/c870x524.jpg",
+        "instructorName": "Ryan Mitchell",
+        "instructorEmail": "ryan.mitchell@example.com",
+        "availableSeats": 25,
+        "price": 0
+    },
+    {
+        "className": "Cardio Dance Class",
+        "classImage": "https://i.ibb.co/MgNphw2/102879a4f7b2f373a3218a4219a064a0.jpg",
+        "instructorName": "Melissa Adams",
+        "instructorEmail": "melissa.adams@example.com",
+        "availableSeats": 20,
+        "price": 10
+    }
+]
