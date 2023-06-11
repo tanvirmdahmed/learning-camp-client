@@ -10,6 +10,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import PrivateRoute from "./PrivateRoutes";
+import MySelectedClasses from "../Pages/Dashboard/MySelectedClasses/MySelectedClasses";
 
 const router = createBrowserRouter([
     {
@@ -31,7 +32,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+                children: [
+                    {
+                        path: 'mySelectedClasses',
+                        element: <MySelectedClasses></MySelectedClasses>
+                    }
+                ]
             },
             {
                 path: '/register',
