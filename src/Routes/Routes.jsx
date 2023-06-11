@@ -11,6 +11,13 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import PrivateRoute from "./PrivateRoutes";
 import MySelectedClasses from "../Pages/Dashboard/MySelectedClasses/MySelectedClasses";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import MyEnrolledClasses from "../Pages/Dashboard/MyEnrolledClasses/MyEnrolledClasses";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import AddClass from "../Pages/Dashboard/AddClass/AddClass";
+import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
+import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -34,10 +41,43 @@ const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
                 children: [
+                    // for student
                     {
                         path: 'mySelectedClasses',
                         element: <MySelectedClasses></MySelectedClasses>
-                    }
+                    },
+                    {
+                        path: 'payment',
+                        element: <Payment></Payment>
+                    },
+                    {
+                        path: 'myEnrolledClasses',
+                        element: <MyEnrolledClasses></MyEnrolledClasses>
+                    },
+                    {
+                        path: 'paymentHistory',
+                        element: <PaymentHistory></PaymentHistory>
+                    },
+
+                    // for instructor
+                    {
+                        path: 'addClass',
+                        element: <AddClass></AddClass>
+                    },
+                    {
+                        path: 'myClasses',
+                        element: <MyClasses></MyClasses>
+                    },
+
+                    // for instructor
+                    {
+                        path: 'manageClasses',
+                        element: <ManageClasses></ManageClasses>
+                    },
+                    {
+                        path: 'manageUsers',
+                        element: <ManageUsers></ManageUsers>
+                    },
                 ]
             },
             {

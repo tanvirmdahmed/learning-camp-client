@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import useAdmin from '../../Hooks/useAdmin';
+import useInstructor from '../../Hooks/useInstructor';
 
 const Dashboard = () => {
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+
+
     return (
         <div className='my-2'>
             <div className="drawer lg:drawer-open">
@@ -14,12 +20,36 @@ const Dashboard = () => {
                     </div>
 
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side shadow-xl">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                    <ul className="menu text-lg font-semibold p-4 w-80 h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
-                        <li><Link to='/dashboard/mySelectedClasses'>My Selected Classes</Link></li>
-                        <li><Link to='/dashboard/myEnrolledClasses'>My Enrolled Classes</Link></li>
+
+                        {/* Student */}
+                        {
+                            (!isAdmin && !isInstructor) && <>
+                                <li><Link to='/dashboard/mySelectedClasses'>My Selected Classes</Link></li>
+                                <li><Link to='/dashboard/payment'>Payment</Link></li>
+                                <li><Link to='/dashboard/myEnrolledClasses'>My Enrolled Classes</Link></li>
+                                <li><Link to='/dashboard/paymentHistory'>Payment History</Link></li>
+                            </>
+                        }
+
+                        {/* Instructor */}
+                        {
+                            isInstructor && <>
+                                <li><Link to='/dashboard/addClass'>Add a Class</Link></li>
+                                <li><Link to='/dashboard/myClasses'>My Classes</Link></li>
+                            </>
+                        }
+
+                        {/* Admin */}
+                        {
+                            isAdmin && <>
+                                <li><Link to='/dashboard/manageClasses'>Manage Classes</Link></li>
+                                <li><Link to='/dashboard/manageUsers'>Manage Users</Link></li>
+                            </>
+                        }
 
                     </ul>
 
