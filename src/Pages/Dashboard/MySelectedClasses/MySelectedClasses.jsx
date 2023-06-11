@@ -65,7 +65,7 @@ const MySelectedClasses = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className='text-lg bg-amber-50'>
+                        <tr className='text-lg bg-amber-50 text-center'>
                             <th>SL No.</th>
                             <th>Class Name</th>
                             <th>Instructor Name</th>

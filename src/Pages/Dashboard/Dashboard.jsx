@@ -20,9 +20,9 @@ const Dashboard = () => {
                     </div>
 
                 </div>
-                <div className="drawer-side shadow-xl">
+                <div className="drawer-side drop-shadow-lg">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu text-lg font-semibold p-4 w-80 h-full bg-base-200 text-base-content">
+                    <ul className="menu text-lg space-y-3 font-semibold p-4 w-80 h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
 
                         {/* Student */}

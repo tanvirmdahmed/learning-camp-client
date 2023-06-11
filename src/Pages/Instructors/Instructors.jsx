@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import Title from '../../components/Title/Title';
 
 const Instructors = () => {
-    const { user } = useAuth();
+    // const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const { data: instructors = [], refetch } = useQuery(['instructors'], async () => {
         const res = await axiosSecure.get('/instructors')
