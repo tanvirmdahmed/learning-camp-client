@@ -59,6 +59,14 @@ const Slider = () => {
                         <button className='btn btn-success btn-lg rounded-full'>Enroll Now</button>
                     </div>
                 </SwiperSlide>
+                <SwiperSlide>
+                    <img className='relative' src="https://wp.en.aleteia.org/wp-content/uploads/sites/2/2018/05/web3-stretch-stretching-exercise-health-wellness-woman-sunset-shutterstock.jpg" alt="" />
+                    <div className='absolute space-y-4'>
+                        <h1 className='text-white font-bold text-7xl'>MAKE YOUR SUMMER</h1>
+                        <p className='text-slate-300 font-bold text-5xl'>Unforgettable!</p>
+                        <button className='btn btn-success btn-lg rounded-full'>Enroll Now</button>
+                    </div>
+                </SwiperSlide>
 
                 <div className="autoplay-progress" slot="container-end">
                     <svg viewBox="0 0 48 48" ref={progressCircle}>

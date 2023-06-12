@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import './checkoutForm.css'
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
+
 
 
 const CheckoutForm = ({ selectedClass, closeModal }) => {
@@ -15,6 +17,7 @@ const CheckoutForm = ({ selectedClass, closeModal }) => {
     const [cardError, setCardError] = useState("");
     const [clientSecret, setClientSecret] = useState("");
     const [processing, setProcessing] = useState(false);
+
 
     useEffect(() => {
         if (selectedClass.price > 0) {
@@ -64,6 +67,16 @@ const CheckoutForm = ({ selectedClass, closeModal }) => {
                 },
             });
 
+        if (paymentIntent.status === 'succeeded') {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `Enrollment Successful!, TransactionId: ${paymentIntent.id}`,
+                showConfirmButton: false,
+                timer: 2500
+            });
+        }
+
         console.log(paymentIntent, confirmError, clientSecret);
         if (confirmError) {
             setCardError(confirmError.message);
@@ -90,7 +103,7 @@ const CheckoutForm = ({ selectedClass, closeModal }) => {
                     //   })
                     //   .catch(err => console.log(err))
                     setProcessing(false);
-                    const text = `Enrollment Successful!, TransactionId: ${paymentIntent.id}`;
+                    // const text = `Enrollment Successful!, TransactionId: ${paymentIntent.id}`;
                     navigate('/dashboard/enrolled-classes')
                     closeModal();
                 }
@@ -120,7 +133,7 @@ const CheckoutForm = ({ selectedClass, closeModal }) => {
                 <div className="flex mt-2 justify-around">
                     <button
                         type="button"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                        className="btn btn-neutral btn-sm"
                         onClick={closeModal}
                     >
                         Cancel
@@ -128,13 +141,14 @@ const CheckoutForm = ({ selectedClass, closeModal }) => {
                     <button
                         type="submit"
                         disabled={!stripe || !clientSecret || processing}
-                        className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 cursor-pointer"
+                        className="btn btn-success btn-sm"
                     >
                         {`Pay $${selectedClass?.price}`}
                     </button>
                 </div>
             </form>
             {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
+
         </>
     );
 };

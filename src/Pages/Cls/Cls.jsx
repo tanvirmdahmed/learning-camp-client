@@ -1,21 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAdmin from '../../Hooks/useAdmin';
+import useInstructor from '../../Hooks/useInstructor';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const Cls = ({ cls }) => {
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+
+    const [axiosSecure] = useAxiosSecure();
+    const { data: selectedClasses = [], refetch } = useQuery({
+        queryKey: ['selectedClasses'],
+        enabled: !loading,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/selectedClasses?email=${user?.email}`);
+            return res.data;
+        }
+    });
+
+    console.log(selectedClasses);
 
     const { _id, className, classImage, instructorName, availableSeats, price } = cls;
 
-    const handleSelectedClass = () => {
+    const alreadyExist = selectedClasses.find(selectedClass => selectedClass.classId === cls._id);
+
+    const handleSelectedClass = (_id) => {
+
         if (!user) {
             Navigate('/login')
             return;
         }
 
         let email = user?.email;
-        const selectedClass = { email, classImage, className, instructorName, availableSeats, price }
+        const selectedClass = { classId: _id, email, classImage, className, instructorName, availableSeats, price }
 
         fetch('http://localhost:5000/selectedClasses', {
             method: 'POST',
@@ -33,13 +54,14 @@ const Cls = ({ cls }) => {
                     showConfirmButton: false,
                     timer: 2500
                 });
+                refetch();
             })
     }
 
 
     return (
         <div>
-            <div className={availableSeats === 0 ? 'card card-compact w-[80%] bg-red-400 shadow-xl mx-auto' : 'card card-compact w-[80%] bg-base-100 shadow-xl mx-auto'}>
+            <div className={availableSeats === 0 ? 'card card-compact w-[80%] h-[420px] bg-red-400 shadow-xl mx-auto' : 'card card-compact w-[80%] h-[420px] bg-base-100 shadow-xl mx-auto'}>
                 <figure><img src={classImage} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{className}</h2>
@@ -49,7 +71,7 @@ const Cls = ({ cls }) => {
                     <div className="">
                         {/* <button className={availableSeats === 0 ? 'btn bg-red-800 border-none text-white' : 'btn btn-neutral border-none'}>Select</button> */}
                         {
-                            availableSeats === 0 ? <button className='btn btn-neutral border-none' disabled>Select</button> : <button onClick={handleSelectedClass} className='btn btn-neutral border-none'>Select</button>
+                            (availableSeats === 0 || isAdmin || isInstructor || alreadyExist) ? <button className='btn btn-neutral border-none' disabled>Select</button> : <button onClick={() => handleSelectedClass(_id)} className='btn btn-neutral border-none'>Select</button>
                         }
                     </div>
                 </div>

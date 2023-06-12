@@ -100,7 +100,11 @@ const ManageUsers = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    <div className="font-bold capitalize">{user?.role}</div>
+                                    <div className="font-bold capitalize">
+                                        {
+                                            user?.role ? <span>{user.role}</span> : <span>student</span>
+                                        }
+                                    </div>
                                 </td>
                                 <td>
                                     {

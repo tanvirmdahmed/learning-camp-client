@@ -3,6 +3,7 @@ import Title from '../../../components/Title/Title';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import FeedbackModal from '../ManageUsers/FeedbackModal';
 
 const ManageClasses = () => {
     const { data: classes = [], refetch } = useQuery(['classes'], async () => {
@@ -56,8 +57,40 @@ const ManageClasses = () => {
                         timer: 1500
                     });
                 }
+
+
             });
+        console.log(cls.feedback);
     };
+
+    const handleSendFeedback = (event, cls) => {
+        event.preventDefault();
+
+        const form = event.target;
+        const feedback = form.feedback.value;
+
+        fetch(`http://localhost:5000/classes/feedback/${cls._id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ feedback })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `Your feedback successfully sent`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            });
+    }
 
     return (
         <div className='my-12'>
@@ -77,7 +110,7 @@ const ManageClasses = () => {
                     </thead>
                     <tbody>
                         {
-                            classes.map((cls, index) => <tr key={cls._id} className='text-center'>
+                            classes.map((cls, index) => <tr key={cls._id} className='text-center hover'>
                                 <td className='font-semibold text-base'>{index + 1}</td>
                                 <td>
                                     <div className="flex items-center space-x-3">
@@ -106,7 +139,17 @@ const ManageClasses = () => {
                                 <th className='space-y-3 flex flex-col'>
                                     <button onClick={() => handleApprove(cls)} className="btn btn-success btn-xs" disabled={cls?.status}>Approve</button>
                                     <button onClick={() => handleDeny(cls)} className="btn btn-success btn-xs" disabled={cls.status}>Deny</button>
-                                    <button className="btn btn-success btn-xs">Feedback</button>
+                                    <div>
+                                        {/* modal button */}
+                                        <label htmlFor={cls._id} className="btn btn-success btn-xs" disabled={cls?.feedback}>
+                                            Feedback
+                                        </label>
+                                        {/* modal body */}
+                                        <FeedbackModal
+                                            cls={cls}
+                                            handleSendFeedback={handleSendFeedback}
+                                        ></FeedbackModal>
+                                    </div>
                                 </th>
                             </tr>)
                         }
