@@ -1,3 +1,4 @@
+import moment from 'moment/moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -36,7 +37,7 @@ const Footer = () => {
             </div>
             <div className="footer footer-center p-4 bg-base-300 text-base-content">
                 <div>
-                    <p>Copyright © 2023 - All right reserved by Learning Camp Ltd</p>
+                    <p>Copyright © {moment().format('YYYY')} - All right reserved by Learning Camp Ltd</p>
                 </div>
             </div>
         </footer>
