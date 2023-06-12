@@ -6,6 +6,7 @@ import useAdmin from '../../Hooks/useAdmin';
 import useInstructor from '../../Hooks/useInstructor';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Zoom } from 'react-awesome-reveal';
 
 const Cls = ({ cls }) => {
     const { user, loading } = useAuth();
@@ -60,23 +61,25 @@ const Cls = ({ cls }) => {
 
 
     return (
-        <div>
-            <div className={availableSeats === 0 ? 'card card-compact w-[80%] h-[420px] bg-red-400 shadow-xl mx-auto' : 'card card-compact w-[80%] h-[420px] bg-base-100 shadow-xl mx-auto'}>
-                <figure><img src={classImage} alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">{className}</h2>
-                    <p><strong>Instructor Name:</strong> {instructorName}</p>
-                    <p><strong>Available Seats:</strong> {availableSeats}</p>
-                    <p><strong>Price:</strong> ${price}</p>
-                    <div className="">
-                        {/* <button className={availableSeats === 0 ? 'btn bg-red-800 border-none text-white' : 'btn btn-neutral border-none'}>Select</button> */}
-                        {
-                            (availableSeats === 0 || isAdmin || isInstructor || alreadyExist) ? <button className='btn btn-neutral border-none' disabled>Select</button> : <button onClick={() => handleSelectedClass(_id)} className='btn btn-neutral border-none'>Select</button>
-                        }
+        <Zoom>
+            <div>
+                <div className={availableSeats === 0 ? 'card card-compact w-[80%] h-[420px] bg-red-400 shadow-xl mx-auto' : 'card card-compact w-[80%] h-[420px] bg-base-100 shadow-xl mx-auto'}>
+                    <figure><img src={classImage} alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <h2 className="card-title">{className}</h2>
+                        <p><strong>Instructor Name:</strong> {instructorName}</p>
+                        <p><strong>Available Seats:</strong> {availableSeats}</p>
+                        <p><strong>Price:</strong> ${price}</p>
+                        <div className="">
+                            {/* <button className={availableSeats === 0 ? 'btn bg-red-800 border-none text-white' : 'btn btn-neutral border-none'}>Select</button> */}
+                            {
+                                (availableSeats === 0 || isAdmin || isInstructor || alreadyExist) ? <button className='btn btn-neutral border-none' disabled>Select</button> : <button onClick={() => handleSelectedClass(_id)} className='btn btn-neutral border-none'>Select</button>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Zoom>
     );
 };
 
