@@ -3,8 +3,10 @@ import useAuth from '../../Hooks/useAuth';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Title from '../../components/Title/Title';
+import useTitle from '../../Hooks/useTitle';
 
 const Instructors = () => {
+    useTitle('Instructors')
     // const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const { data: instructors = [], refetch } = useQuery(['instructors'], async () => {

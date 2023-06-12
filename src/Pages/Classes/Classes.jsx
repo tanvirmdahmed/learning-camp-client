@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Title from '../../components/Title/Title';
 import Cls from '../Cls/Cls';
+import useTitle from '../../Hooks/useTitle';
 
 const Classes = () => {
+    useTitle('Classes')
     const [classes, setClasses] = useState([]);
 
     useEffect(() => {

@@ -6,9 +6,11 @@ import axios from 'axios';
 import Title from '../../../components/Title/Title';
 import MySelectedClass from './MySelectedClass';
 import Swal from 'sweetalert2';
+import useTitle from '../../../Hooks/useTitle';
 
 
 const MySelectedClasses = () => {
+    useTitle('Dashboard | My Selected Classes')
     // const [selectedClasses, setSelectedClasses] = useState([]);
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();

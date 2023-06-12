@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 
 
-const CheckoutForm = ({ selectedClass, closeModal }) => {
+const CheckoutForm = ({ selectedClass, closeModal, refetch }) => {
     const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();
@@ -67,15 +67,6 @@ const CheckoutForm = ({ selectedClass, closeModal }) => {
                 },
             });
 
-        if (paymentIntent.status === 'succeeded') {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: `Enrollment Successful!, TransactionId: ${paymentIntent.id}`,
-                showConfirmButton: false,
-                timer: 2500
-            });
-        }
 
         console.log(paymentIntent, confirmError, clientSecret);
         if (confirmError) {
@@ -85,29 +76,36 @@ const CheckoutForm = ({ selectedClass, closeModal }) => {
         console.log("payment intent", paymentIntent);
 
         if (paymentIntent.status === "succeeded") {
+            Swal.fire({
+                title: 'Payment Successful!',
+                text: `TransactionId: ${paymentIntent.id}`,
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
+
             // save payment information to the server
-            const paymentInfo = {
-                ...selectedClass,
+            const payment = {
+                email: user?.email,
                 transactionId: paymentIntent.id,
-            };
-            axiosSecure.post("/enrolledClass", paymentInfo).then((res) => {
-                if (res.data.insertedId) {
-                    // updateStatus(selectedClass.classId, true)
-                    //   .then(data => {
-                    //     setProcessing(false)
-                    //     console.log(data)
-                    //     const text = Enrollment Successful!, TransactionId: ${paymentIntent.id}
-                    //     toast.success(text)
-                    //     // navigate('/dashboard/my-bookings')
-                    //     closeModal()
-                    //   })
-                    //   .catch(err => console.log(err))
-                    setProcessing(false);
-                    // const text = `Enrollment Successful!, TransactionId: ${paymentIntent.id}`;
-                    navigate('/dashboard/enrolled-classes')
-                    closeModal();
-                }
-            });
+                price: selectedClass.price,
+                date: new Date(),
+                id: selectedClass._id,
+                classId: selectedClass.classId,
+                classImage: selectedClass.classImage,
+                status: 'Payment Successful',
+                className: selectedClass.className,
+                instructorName: selectedClass.instructorName
+            }
+
+            axiosSecure.post('/payments', payment)
+                .then(res => {
+                    // console.log(res.data);
+                    if (res.data.insertedId) {
+
+                    }
+                })
+
+
         }
     };
     return (

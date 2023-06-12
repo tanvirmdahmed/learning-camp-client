@@ -4,8 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import FeedbackModal from '../ManageUsers/FeedbackModal';
+import useTitle from '../../../Hooks/useTitle';
 
 const ManageClasses = () => {
+    useTitle('Dashboard | Manage Classes')
     const { data: classes = [], refetch } = useQuery(['classes'], async () => {
         const res = await axios.get('http://localhost:5000/classes')
         return res.data;

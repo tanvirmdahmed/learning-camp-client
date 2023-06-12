@@ -4,8 +4,10 @@ import useAdmin from '../../Hooks/useAdmin';
 import useInstructor from '../../Hooks/useInstructor';
 import { FaCashRegister, FaHistory, FaPlusSquare, FaRegBookmark, FaTachometerAlt, FaTasks, FaUserEdit } from 'react-icons/fa';
 import useAuth from '../../Hooks/useAuth';
+import useTitle from '../../Hooks/useTitle';
 
 const Dashboard = () => {
+    useTitle('Dashboard')
     const { user } = useAuth();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();

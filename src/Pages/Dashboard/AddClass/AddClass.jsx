@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import useAuth from '../../../Hooks/useAuth';
 import Title from '../../../components/Title/Title';
+import useTitle from '../../../Hooks/useTitle';
 
 const AddClass = () => {
+    useTitle('Dashboard | Add Class')
     const { user } = useAuth();
 
     const handleAddClass = event => {

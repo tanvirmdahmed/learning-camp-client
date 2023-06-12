@@ -1,12 +1,12 @@
 import React from 'react';
 import Title from '../../../components/Title/Title';
-import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import useTitle from '../../../Hooks/useTitle';
 
 const ManageUsers = () => {
-    const { user } = useAuth();
+    useTitle('Dashboard | Manage Users')
     const [axiosSecure] = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await axiosSecure.get(`/users`)

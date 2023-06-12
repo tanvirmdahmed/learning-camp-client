@@ -5,8 +5,10 @@ import { useQuery } from '@tanstack/react-query';
 import Title from '../../../components/Title/Title';
 import { FaUserEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import useTitle from '../../../Hooks/useTitle';
 
 const MyClasses = () => {
+    useTitle('Dashboard | My Classes')
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const { data: myClasses = [], refetch } = useQuery(['myClasses'], async () => {
