@@ -8,7 +8,9 @@ const Footer = () => {
             <div>
                 <div className="footer p-10 bg-base-200 text-base-content">
                     <div>
-
+                        <Link to='/'>
+                            <img src="https://i.ibb.co/n3qfJ7W/summer-learning-camp-1.png" className='w-8 md:w-10 lg:w-14' alt="" />
+                        </Link>
                         <p>Learning Camp Ltd.<br />Providing reliable tech since 2005</p>
                     </div>
                     <div>
