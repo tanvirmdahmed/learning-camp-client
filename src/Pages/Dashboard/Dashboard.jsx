@@ -18,9 +18,7 @@ const Dashboard = () => {
                 <img src={user.photoURL} />
             </div>
         </div>
-        <div>
-            <h2 className="card-title mt-3">{user.displayName}</h2>
-        </div>
+
     </div>
 
 
