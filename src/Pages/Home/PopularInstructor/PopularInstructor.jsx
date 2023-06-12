@@ -2,6 +2,7 @@ import React from 'react';
 import useTitle from '../../../Hooks/useTitle';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import Title from '../../../components/Title/Title';
 
 const PopularInstructor = () => {
     useTitle('Instructors')
