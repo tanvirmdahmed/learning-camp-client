@@ -39,7 +39,7 @@ const Cls = ({ cls }) => {
         let email = user?.email;
         const selectedClass = { classId: _id, email, classImage, className, instructorName, availableSeats, price }
 
-        fetch('http://localhost:5000/selectedClasses', {
+        fetch('https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/selectedClasses', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -71,7 +71,6 @@ const Cls = ({ cls }) => {
                         <p><strong>Available Seats:</strong> {availableSeats}</p>
                         <p><strong>Price:</strong> ${price}</p>
                         <div className="">
-                            {/* <button className={availableSeats === 0 ? 'btn bg-red-800 border-none text-white' : 'btn btn-neutral border-none'}>Select</button> */}
                             {
                                 (availableSeats === 0 || isAdmin || isInstructor || alreadyExist) ? <button className='btn btn-neutral border-none' disabled>Select</button> : <button onClick={() => handleSelectedClass(_id)} className='btn btn-neutral border-none'>Select</button>
                             }

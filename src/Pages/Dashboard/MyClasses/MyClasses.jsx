@@ -32,7 +32,7 @@ const MyClasses = () => {
         console.log(updatedClass);
 
         // send data to the server
-        fetch(`http://localhost:5000/classes/${cls._id}`, {
+        fetch(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/classes/${cls._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -98,14 +98,14 @@ const MyClasses = () => {
                                         cls?.status ? <span>{cls?.status}</span> : <span>pending</span>
                                     }
                                 </th>
-                                <th className='capitalize w-40 text-xs'>
+                                <th className='capitalize w-40'>
                                     {
                                         cls?.feedback ? <span><small>{cls.feedback}</small></span> : <span><small>No feedback</small></span>
                                     }
                                 </th>
                                 <th className=''>
                                     {/* modal button */}
-                                    <label htmlFor={cls._id} className="btn btn-success btn-xs"><FaUserEdit></FaUserEdit></label>
+                                    <label htmlFor={cls._id} className="btn btn-success btn-md"><FaUserEdit></FaUserEdit></label>
 
                                     {/* modal body */}
                                     <input type="checkbox" id={cls._id} className="modal-toggle" />
