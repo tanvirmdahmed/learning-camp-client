@@ -29,9 +29,7 @@ const Instructors = () => {
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">{instructor.name}</h2>
                                 <p>{instructor.email}</p>
-                                <div className="card-actions">
-                                    <button className="btn btn-neutral">Contact</button>
-                                </div>
+
                             </div>
                         </div>)
                     }
