@@ -32,7 +32,7 @@ const MyClasses = () => {
         console.log(updatedClass);
 
         // send data to the server
-        fetch(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/classes/${cls._id}`, {
+        fetch(`http://localhost:5000/classes/${cls._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -62,7 +62,7 @@ const MyClasses = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className='text-center bg-purple-100 text-base'>
+                        <tr className='text-center bg-base-300 text-base'>
                             <th>SL No.</th>
                             <th>Classes</th>
                             <th>Enrolled</th>
@@ -90,7 +90,9 @@ const MyClasses = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    <span className="">Enroll Count</span>
+                                    {
+                                        cls?.enrolledStudents ? <span className="">{cls.enrolledStudents}</span> : <span className="">0</span>
+                                    }
                                 </td>
                                 <td>${cls.price}</td>
                                 <th className='capitalize'>

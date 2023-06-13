@@ -24,14 +24,15 @@ const MyEnrolledClasses = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className='text-lg bg-amber-50'>
+                        <tr className='text-lg bg-base-300'>
                             <th>SL No.</th>
                             <th>Details</th>
                             <th>Instructor Name</th>
+                            <th>Available Seats</th>
                             <th>Price</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='hover'>
                         {
                             myEnrolledClasses.map((myEnrolledClass, i) => <tr key={myEnrolledClass._id} className="hover">
                                 <th>{i + 1}</th>
@@ -47,6 +48,7 @@ const MyEnrolledClasses = () => {
                                         </div>
                                     </div>
                                 </td>
+                                <td className="font-bold">{myEnrolledClass.instructorName}</td>
                                 <td className="font-bold">{myEnrolledClass.instructorName}</td>
                                 <td>${myEnrolledClass.price}</td>
 

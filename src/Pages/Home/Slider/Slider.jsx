@@ -19,7 +19,7 @@ const Slider = () => {
     };
 
     return (
-        <div className='h-[90vh] my-12'>
+        <div className='h-[30vh] md:h-[80vh] lg:h-[90vh] mt-6 mb-12'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -37,34 +37,34 @@ const Slider = () => {
             >
                 <SwiperSlide>
                     <img className='relative' src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZXhlcmNpc2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="" />
-                    <div className='absolute space-y-4'>
-                        <h1 className='text-white font-bold text-7xl'>MAKE YOUR SUMMER</h1>
-                        <p className='text-red-300 font-bold text-5xl'>Unforgettable!</p>
-                        <button className='btn btn-success btn-lg rounded-full'>Enroll Now</button>
+                    <div className='absolute space-y-2 md:space-y-3 lg:space-y-4'>
+                        <h1 className='text-white font-bold text-3xl md:text-xl lg:text-7xl'>MAKE YOUR SUMMER</h1>
+                        <p className='text-red-300 font-bold text-2xl md:text-4xl lg:text-5xl'>Unforgettable!</p>
+                        <button className='btn btn-success btn-sm md:btn-md lg:btn-lg rounded-full '>Enroll Now</button>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img className='relative' src="https://i0.wp.com/studyinfitness.com/wp-content/uploads/2020/07/mor-shani-li4dxZ0KYRw-unsplash-scaled.jpg?fit=2560%2C1787&ssl=1" alt="" />
-                    <div className='absolute space-y-4'>
-                        <h1 className='text-white font-bold text-7xl'>MAKE YOUR SUMMER</h1>
-                        <p className='text-slate-300 font-bold text-5xl'>Unforgettable!</p>
-                        <button className='btn btn-success btn-lg rounded-full'>Enroll Now</button>
+                    <div className='absolute space-y-2 md:space-y-3 lg:space-y-4'>
+                        <h1 className='text-white font-bold text-3xl md:text-xl lg:text-7xl'>MAKE YOUR SUMMER</h1>
+                        <p className='text-slate-300 font-bo text-2xl md:text-4xl lg:text-5xl'>Unforgettable!</p>
+                        <button className='btn btn-success btn-sm md:btn-md lg:btn-lg rounded-full '>Enroll Now</button>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img className='relative' src="https://images.healthshots.com/healthshots/en/uploads/2023/05/10200007/exercise.jpg" alt="" />
-                    <div className='absolute space-y-4'>
-                        <h1 className='text-white font-bold text-7xl'>MAKE YOUR SUMMER</h1>
-                        <p className='text-slate-300 font-bold text-5xl'>Unforgettable!</p>
-                        <button className='btn btn-success btn-lg rounded-full'>Enroll Now</button>
+                    <div className='absolute space-y-2 md:space-y-3 lg:space-y-4'>
+                        <h1 className='text-white font-bold text-3xl md:text-xl lg:text-7xl'>MAKE YOUR SUMMER</h1>
+                        <p className='text-slate-300 font-bo text-2xl md:text-4xl lg:text-5xl'>Unforgettable!</p>
+                        <button className='btn btn-success btn-sm md:btn-md lg:btn-lg rounded-full '>Enroll Now</button>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img className='relative' src="https://wp.en.aleteia.org/wp-content/uploads/sites/2/2018/05/web3-stretch-stretching-exercise-health-wellness-woman-sunset-shutterstock.jpg" alt="" />
-                    <div className='absolute space-y-4'>
-                        <h1 className='text-white font-bold text-7xl'>MAKE YOUR SUMMER</h1>
-                        <p className='text-slate-300 font-bold text-5xl'>Unforgettable!</p>
-                        <button className='btn btn-success btn-lg rounded-full'>Enroll Now</button>
+                    <div className='absolute space-y-2 md:space-y-3 lg:space-y-4'>
+                        <h1 className='text-white font-bold text-3xl md:text-xl lg:text-7xl'>MAKE YOUR SUMMER</h1>
+                        <p className='text-slate-300 font-bo text-2xl md:text-4xl lg:text-5xl'>Unforgettable!</p>
+                        <button className='btn btn-success btn-sm md:btn-md lg:btn-lg rounded-full '>Enroll Now</button>
                     </div>
                 </SwiperSlide>
 

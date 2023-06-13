@@ -23,7 +23,7 @@ const PaymentHistory = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className='text-lg bg-amber-50 text-center'>
+                        <tr className='text-lg bg-base-300 text-center'>
                             <th>SL No.</th>
                             <th>Details</th>
                             <th>Transaction ID</th>
@@ -43,16 +43,16 @@ const PaymentHistory = () => {
                                                 <img src={myPaymentHistory.classImage} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
-                                        <div>
+                                        <div className='text-left'>
                                             <div className="font-bold">{myPaymentHistory.className}</div>
-                                            <div className="text-sm opacity-70">{myPaymentHistory.instructorName}</div>
+                                            <p>{myPaymentHistory.instructorName}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>{myPaymentHistory.transactionId}</td>
                                 <td>{myPaymentHistory.date}</td>
                                 <td>${myPaymentHistory.price}</td>
-                                <td>{myPaymentHistory.status}</td>
+                                <td className='font-bold'>{myPaymentHistory.status}</td>
 
                             </tr>)
                         }

@@ -5,10 +5,12 @@ import './checkoutForm.css'
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 
 
-const CheckoutForm = ({ selectedClass, closeModal, refetch }) => {
+const CheckoutForm = ({ selectedClass, closeModal }) => {
     const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();
@@ -17,7 +19,6 @@ const CheckoutForm = ({ selectedClass, closeModal, refetch }) => {
     const [cardError, setCardError] = useState("");
     const [clientSecret, setClientSecret] = useState("");
     const [processing, setProcessing] = useState(false);
-
 
     useEffect(() => {
         if (selectedClass.price > 0) {
@@ -105,6 +106,35 @@ const CheckoutForm = ({ selectedClass, closeModal, refetch }) => {
                     }
                 })
 
+            // const enrolledClass = classes.find(student => student._id === selectedClass.classId);
+            // console.log(enrolledClass);
+            // const students = enrolledClass?.enrolledStudents ? enrolledClass.enrolledStudents + 1 : 0;
+
+            // const updatedClass = {
+            //     availableSeats: enrolledClass.availableSeats - 1,
+            //     enrolledStudents: students
+            // }
+            // console.log(updatedClass);
+
+            axios.patch(`http://localhost:5000/classes/${selectedClass.classId}`)
+                .then(res => {
+                    console.log(res.data);
+                })
+
+            // fetch(`http://localhost:5000/classes/${selectedClass.classId}`, {
+            //     method: 'PATCH',
+            // })
+            //     .then(res => res.json())
+            //     .then(data => {
+            //         console.log(data);
+            //         if (data.modifiedCount) {
+
+            //         }
+            //     });
+
+
+
+
 
         }
     };
@@ -139,7 +169,7 @@ const CheckoutForm = ({ selectedClass, closeModal, refetch }) => {
                     <button
                         type="submit"
                         disabled={!stripe || !clientSecret || processing}
-                        className="btn btn-success btn-sm"
+                        className="btn btn-warning btn-sm"
                     >
                         {`Pay $${selectedClass?.price}`}
                     </button>

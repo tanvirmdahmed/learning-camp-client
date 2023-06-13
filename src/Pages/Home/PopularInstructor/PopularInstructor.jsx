@@ -1,28 +1,24 @@
 import React from 'react';
-import useTitle from '../../../Hooks/useTitle';
-import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Title from '../../../components/Title/Title';
 import { Zoom } from 'react-awesome-reveal';
+import axios from 'axios';
 
 
 const PopularInstructor = () => {
-    useTitle('Instructors')
-    // const { user } = useAuth();
-    const [axiosSecure] = useAxiosSecure();
-    const { data: instructors = [], refetch } = useQuery(['instructors'], async () => {
-        const res = await axiosSecure.get('/instructors')
+    const { data: popularInstructors = [], refetch } = useQuery(['popularInstructors'], async () => {
+        const res = await axios.get('http://localhost:5000/popularInstructors')
         return res.data;
     })
-    console.log(instructors);
+    console.log(popularInstructors);
 
     return (
-        <Zoom>
-            <div className='my-12'>
-                <Title title='Popular Instructor'></Title>
-                <div className='grid grid-cols-3 gap-4 mx-auto'>
+        <div className='my-12'>
+            <Title title='Popular Instructor'></Title>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto'>
+                <Zoom delay={1e3} cascade damping={1e-1}>
                     {
-                        instructors.slice(0, 6).map(instructor => <div key={instructor._key} className="card w-96 bg-slate-50 shadow-xl mx-auto">
+                        popularInstructors.map(instructor => <div key={instructor._id} className="card w-96 bg-base-100 shadow-xl mx-auto">
                             <figure className="px-10 pt-10">
                                 <img src={instructor.photo} alt="Shoes" className="rounded-xl" />
                             </figure>
@@ -35,9 +31,10 @@ const PopularInstructor = () => {
                             </div>
                         </div>)
                     }
-                </div>
+                </Zoom>
             </div>
-        </Zoom>
+        </div>
+
     );
 };
 

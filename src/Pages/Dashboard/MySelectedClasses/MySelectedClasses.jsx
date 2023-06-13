@@ -22,7 +22,7 @@ const MySelectedClasses = () => {
 
 
     // useEffect(() => {
-    //     axios.get(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/selectedClasses?email=${user?.email}`)
+    //     axios.get(`http://localhost:5000/selectedClasses?email=${user?.email}`)
     //         .then(data => setSelectedClasses(data.data))
     // }, [])
     // console.log(selectedClasses);
@@ -39,7 +39,7 @@ const MySelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/selectedClasses/${_id}`, {
+                fetch(`http://localhost:5000/selectedClasses/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -67,7 +67,7 @@ const MySelectedClasses = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className='text-lg bg-amber-50 text-center'>
+                        <tr className='text-lg bg-base-300 text-center'>
                             <th>SL No.</th>
                             <th>Class Name</th>
                             <th>Instructor Name</th>

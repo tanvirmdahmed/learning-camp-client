@@ -9,13 +9,13 @@ import useTitle from '../../../Hooks/useTitle';
 const ManageClasses = () => {
     useTitle('Dashboard | Manage Classes')
     const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-        const res = await axios.get('https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/classes')
+        const res = await axios.get('http://localhost:5000/classes')
         return res.data;
     })
     console.log(classes);
 
     const handleApprove = cls => {
-        fetch(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/classes/approve/${cls._id}`, {
+        fetch(`http://localhost:5000/classes/approve/${cls._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const ManageClasses = () => {
     };
 
     const handleDeny = cls => {
-        fetch(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/classes/deny/${cls._id}`, {
+        fetch(`http://localhost:5000/classes/deny/${cls._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ const ManageClasses = () => {
         const form = event.target;
         const feedback = form.feedback.value;
 
-        fetch(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/classes/feedback/${cls._id}`, {
+        fetch(`http://localhost:5000/classes/feedback/${cls._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ const ManageClasses = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className='text-center bg-purple-100 text-base'>
+                        <tr className='text-center bg-base-300 text-base'>
                             <th>SL No.</th>
                             <th>Classes</th>
                             <th>Instructor</th>
@@ -144,7 +144,7 @@ const ManageClasses = () => {
                                     <div>
                                         {/* modal button */}
                                         <label htmlFor={cls._id} className="btn btn-success btn-xs" disabled={cls?.feedback}>
-                                            Feedback
+                                            Send Feedback
                                         </label>
                                         {/* modal body */}
                                         <FeedbackModal

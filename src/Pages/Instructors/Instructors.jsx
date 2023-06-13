@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import useAuth from '../../Hooks/useAuth';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Title from '../../components/Title/Title';
 import useTitle from '../../Hooks/useTitle';
-import { Zoom } from 'react-awesome-reveal';
+import { Fade } from 'react-awesome-reveal';
+import axios from 'axios';
 
 const Instructors = () => {
     useTitle('Instructors')
-    // const { user } = useAuth();
-    const [axiosSecure] = useAxiosSecure();
     const { data: instructors = [], refetch } = useQuery(['instructors'], async () => {
-        const res = await axiosSecure.get('/instructors')
+        const res = await axios.get('http://localhost:5000/instructors')
         return res.data;
     })
     console.log(instructors);
 
     return (
-        <Zoom>
-            <div className='my-12'>
-                <Title title='All Instructors'></Title>
-                <div className='grid grid-cols-3 gap-4 mx-auto'>
+        <div className='my-12'>
+            <Title title='All Instructors'></Title>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto'>
+                <Fade cascade damping={1e-1}>
                     {
-                        instructors.map(instructor => <div key={instructor._key} className="card w-96 bg-slate-50 shadow-xl mx-auto">
+                        instructors.map(instructor => <div key={instructor._id} className="card w-96 bg-base-100 shadow-xl mx-auto">
                             <figure className="px-10 pt-10">
                                 <img src={instructor.photo} alt="Shoes" className="rounded-xl" />
                             </figure>
@@ -35,9 +32,9 @@ const Instructors = () => {
                             </div>
                         </div>)
                     }
-                </div>
+                </Fade>
             </div>
-        </Zoom>
+        </div>
     );
 };
 

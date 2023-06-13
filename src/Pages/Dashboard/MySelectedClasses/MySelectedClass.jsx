@@ -22,7 +22,7 @@ const MySelectedClass = ({ selectedClass, i, handleDelete }) => {
             <td>{instructorName}</td>
             <td>${price}</td>
             <td>
-                <Link onClick={() => setModal(true)} className="btn btn-square btn-neutral btn-sm">Pay</Link>
+                <Link onClick={() => setModal(true)} className="btn btn-square btn-neutral btn-sm capitalize">Pay</Link>
             </td>
             <td>
                 <button onClick={() => handleDelete(_id)} className="btn btn-circle btn-outline btn-sm">

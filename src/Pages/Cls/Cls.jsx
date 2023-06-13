@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
-import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAdmin from '../../Hooks/useAdmin';
 import useInstructor from '../../Hooks/useInstructor';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Zoom } from 'react-awesome-reveal';
+import { useNavigate } from 'react-router-dom';
 
 const Cls = ({ cls }) => {
     const { user, loading } = useAuth();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
+    const navigate = useNavigate();
 
     const [axiosSecure] = useAxiosSecure();
     const { data: selectedClasses = [], refetch } = useQuery({
@@ -32,14 +33,14 @@ const Cls = ({ cls }) => {
     const handleSelectedClass = (_id) => {
 
         if (!user) {
-            Navigate('/login')
+            navigate('/login')
             return;
         }
 
         let email = user?.email;
         const selectedClass = { classId: _id, email, classImage, className, instructorName, availableSeats, price }
 
-        fetch('https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/selectedClasses', {
+        fetch('http://localhost:5000/selectedClasses', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -63,7 +64,7 @@ const Cls = ({ cls }) => {
     return (
         <Zoom>
             <div>
-                <div className={availableSeats === 0 ? 'card card-compact w-[80%] h-[420px] bg-red-400 shadow-xl mx-auto' : 'card card-compact w-[80%] h-[420px] bg-base-100 shadow-xl mx-auto'}>
+                <div className={availableSeats === 0 ? 'card card-compact w-96 h-[420px] bg-red-400 shadow-xl mx-auto' : 'card card-compact w-96 h-[420px] bg-base-100 shadow-xl mx-auto'}>
                     <figure><img src={classImage} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{className}</h2>

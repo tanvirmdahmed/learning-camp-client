@@ -11,14 +11,14 @@ const Footer = () => {
                         <Link to='/'>
                             <img src="https://i.ibb.co/n3qfJ7W/summer-learning-camp-1.png" className='w-8 md:w-10 lg:w-14' alt="" />
                         </Link>
-                        <p>Learning Camp Ltd.<br />Providing reliable tech since 2005</p>
+                        <p><strong className='text-lg'>Learning Camp Ltd.</strong><br />Providing reliable tech since 2005</p>
                     </div>
                     <div>
                         <span className="footer-title">Services</span>
-                        <a className="link link-hover">Branding</a>
-                        <a className="link link-hover">Design</a>
-                        <a className="link link-hover">Marketing</a>
-                        <a className="link link-hover">Advertisement</a>
+                        <a className="link link-hover">Personal Training</a>
+                        <a className="link link-hover">Nutritional Guidance</a>
+                        <a className="link link-hover">Personal Training</a>
+                        <a className="link link-hover">Physical Therapy and Rehabilitation</a>
                     </div>
                     <div>
                         <span className="footer-title">Company</span>

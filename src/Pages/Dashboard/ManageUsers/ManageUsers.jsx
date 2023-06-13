@@ -14,7 +14,7 @@ const ManageUsers = () => {
     })
 
     const handleMakeAdmin = user => {
-        fetch(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/users/admin/${user._id}`, {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const ManageUsers = () => {
 
 
     const handleMakeInstructor = user => {
-        fetch(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/users/instructor/${user._id}`, {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ const ManageUsers = () => {
                 <table className="table tab-rounded-lg">
                     {/* head */}
                     <thead>
-                        <tr className='text-lg font-bold text-gray-600 bg-amber-50'>
+                        <tr className='text-lg font-bold text-gray-600 bg-base-300'>
                             <th>SL No.</th>
                             <th>Name</th>
                             <th>Role</th>
@@ -80,7 +80,7 @@ const ManageUsers = () => {
                             <th>Make Instructor</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='hover'>
 
                         {
                             users.map((user, index) => <tr key={user._id}>

@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom';
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { FaUser } from 'react-icons/fa';
 import useAuth from '../../../Hooks/useAuth';
+import useAdmin from '../../../Hooks/useAdmin';
+import useInstructor from '../../../Hooks/useInstructor';
+import ThemeChange from '../../../components/ThemeChange/ThemeChange';
 
 const Navbar = () => {
     const { user, logOut, photo } = useAuth();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
 
     const handleLogOut = () => {
@@ -16,19 +21,25 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-[#F2F2F2] rounded-b-lg shadow-lg px-4 py-4 w-full mx-auto">
+        <div className="navbar text-base-content bg-base-200 rounded-b-lg shadow-lg px-4 py-4 w-full mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <CgMenuLeftAlt className='h-8 w-8'></CgMenuLeftAlt>
                     </label>
 
-                    <div tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-4 bg-base-200 shadow rounded-box w-40 gap-4">
+                    <div tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-4 bg-base-200 shadow rounded-box w-40 gap-4 z-50">
                         <ActiveLink to='/'>Home</ActiveLink>
                         <ActiveLink to='/instructors'>Instructors</ActiveLink>
                         <ActiveLink to='/classes'>Classes</ActiveLink>
                         {
-                            user && <ActiveLink to='/dashboard'>Dashboard</ActiveLink>
+                            (!isAdmin && !isInstructor && user) && <ActiveLink to='/dashboard/mySelectedClasses'>Dashboard</ActiveLink>
+                        }
+                        {
+                            isInstructor && <ActiveLink to='/dashboard/addClass'>Dashboard</ActiveLink>
+                        }
+                        {
+                            isAdmin && <ActiveLink to='/dashboard/manageClasses'>Dashboard</ActiveLink>
                         }
                     </div>
                 </div>
@@ -44,7 +55,13 @@ const Navbar = () => {
                     <ActiveLink to='/instructors'>Instructors</ActiveLink>
                     <ActiveLink to='/classes'>Classes</ActiveLink>
                     {
-                        user && <ActiveLink to='/dashboard'>Dashboard</ActiveLink>
+                        (!isAdmin && !isInstructor && user) && <ActiveLink to='/dashboard/mySelectedClasses'>Dashboard</ActiveLink>
+                    }
+                    {
+                        isInstructor && <ActiveLink to='/dashboard/addClass'>Dashboard</ActiveLink>
+                    }
+                    {
+                        isAdmin && <ActiveLink to='/dashboard/manageClasses'>Dashboard</ActiveLink>
                     }
                 </div>
             </div>
@@ -68,7 +85,7 @@ const Navbar = () => {
                 {
                     user ? <Link onClick={handleLogOut} className="btn bg-gradient-to-r from-[#C0966B] to-[#9f570f]  border-none text-zinc-50">Logout</Link> : <Link to='/login' className="btn bg-gradient-to-r from-[#aa6117] to-[#C0966B] border-none text-zinc-50">Login</Link>
                 }
-                {/* <Link to='/login' className="btn bg-gradient-to-r from-[#2563EB] to-[#0949d2] border-none hover:bg-[#0949d2] text-white">Login</Link> */}
+                <ThemeChange></ThemeChange>
             </div>
         </div>
     );

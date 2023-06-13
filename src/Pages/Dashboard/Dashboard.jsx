@@ -18,9 +18,7 @@ const Dashboard = () => {
                 <img src={user.photoURL} />
             </div>
         </div>
-        <div>
-            <h2 className="card-title mt-3">{user.displayName}</h2>
-        </div>
+        <p className='mt-3 font-bold opacity-80'>{user.displayName}</p>
     </div>
 
 
@@ -30,7 +28,9 @@ const Dashboard = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">
                     {/* Page content here */}
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                    <div className='mx-auto'>
+                        <label htmlFor="my-drawer-2" className="btn btn-neutral w-48 lg:hidden">Dashboard Menu</label>
+                    </div>
                     <div className='mx-6 my-6'>
                         <Outlet></Outlet>
                     </div>
