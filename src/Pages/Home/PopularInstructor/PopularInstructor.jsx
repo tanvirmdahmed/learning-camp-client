@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const PopularInstructor = () => {
     const { data: popularInstructors = [], refetch } = useQuery(['popularInstructors'], async () => {
-        const res = await axios.get('http://localhost:5000/popularInstructors')
+        const res = await axios.get('https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/popularInstructors')
         return res.data;
     })
     console.log(popularInstructors);

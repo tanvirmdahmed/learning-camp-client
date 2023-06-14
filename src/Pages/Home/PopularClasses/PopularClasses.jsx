@@ -6,7 +6,7 @@ import { Fade } from 'react-awesome-reveal';
 
 const PopularClasses = () => {
     const { data: popularClasses = [], refetch } = useQuery(['popularClasses'], async () => {
-        const res = await axios.get('http://localhost:5000/popularClasses')
+        const res = await axios.get('https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/popularClasses')
         return res.data;
     })
     console.log(popularClasses);

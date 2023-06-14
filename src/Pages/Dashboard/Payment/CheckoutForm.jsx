@@ -116,12 +116,12 @@ const CheckoutForm = ({ selectedClass, closeModal }) => {
             // }
             // console.log(updatedClass);
 
-            axios.patch(`http://localhost:5000/classes/${selectedClass.classId}`)
+            axios.patch(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/classes/${selectedClass.classId}`)
                 .then(res => {
                     console.log(res.data);
                 })
 
-            // fetch(`http://localhost:5000/classes/${selectedClass.classId}`, {
+            // fetch(`https://b7a12-summer-camp-server-side-tanvirmdahmed.vercel.app/classes/${selectedClass.classId}`, {
             //     method: 'PATCH',
             // })
             //     .then(res => res.json())

@@ -26,6 +26,13 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'User Logged in successfully.',
+                    showConfirmButton: false,
+                    timer: 2500
+                });
                 navigate(from, { replace: true });
             })
             .catch(error => {
