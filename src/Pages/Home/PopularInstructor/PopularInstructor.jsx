@@ -14,7 +14,7 @@ const PopularInstructor = () => {
 
     return (
         <div className='my-12'>
-            <Title title='Popular Instructor'></Title>
+            <Title title='Popular Instructors'></Title>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto'>
                 <Zoom delay={1e3} cascade damping={1e-1}>
                     {
