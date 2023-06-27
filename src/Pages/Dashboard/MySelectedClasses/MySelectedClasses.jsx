@@ -7,14 +7,24 @@ import Title from '../../../components/Title/Title';
 import MySelectedClass from './MySelectedClass';
 import Swal from 'sweetalert2';
 import useTitle from '../../../Hooks/useTitle';
+import Payment from '../Payment/Payment';
 
 
 const MySelectedClasses = () => {
-    useTitle('Dashboard | My Selected Classes')
+    useTitle('Dashboard | My Selected Classes');
+    const [singleClass, setSingleClass] = useState(null);
+    let [modal, setModal] = useState(false);
+    console.log(singleClass);
+
+    const closeModal = () => {
+        setModal(false)
+        setSingleClass(null)
+    }
+
     // const [selectedClasses, setSelectedClasses] = useState([]);
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const { data: selectedClasses = [], refetch } = useQuery(['selectedClasses'], async () => {
+    const { data: selectedClasses = [], refetch } = useQuery(['selectedClasses', user?.email], async () => {
         const res = await axiosSecure.get(`/selectedClasses?email=${user?.email}`)
         return res.data;
     })
@@ -83,7 +93,12 @@ const MySelectedClasses = () => {
                                 selectedClass={selectedClass}
                                 i={i}
                                 handleDelete={handleDelete}
+                                setSingleClass={setSingleClass}
+                                setModal={setModal}
                             ></MySelectedClass>)
+                        }
+                        {
+                            singleClass && <Payment isOpen={modal} closeModal={closeModal} selectedClass={singleClass} />
                         }
 
                     </tbody>

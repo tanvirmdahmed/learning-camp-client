@@ -4,14 +4,9 @@ import { Link } from 'react-router-dom';
 import Payment from '../Payment/Payment';
 
 
-const MySelectedClass = ({ selectedClass, i, handleDelete }) => {
+const MySelectedClass = ({ selectedClass, i, handleDelete, setSingleClass, setModal }) => {
     const { _id, className, instructorName, price } = selectedClass;
 
-    let [modal, setModal] = useState(false);
-
-    const closeModal = () => {
-        setModal(false)
-    }
 
 
 
@@ -22,14 +17,16 @@ const MySelectedClass = ({ selectedClass, i, handleDelete }) => {
             <td>{instructorName}</td>
             <td>${price}</td>
             <td>
-                <Link onClick={() => setModal(true)} className="btn btn-square btn-neutral btn-sm capitalize">Pay</Link>
+                <button onClick={() => {
+                    setSingleClass(selectedClass)
+                    setModal(true)
+                }} className="btn btn-square btn-neutral btn-sm capitalize">Pay</button>
             </td>
             <td>
                 <button onClick={() => handleDelete(_id)} className="btn btn-circle btn-outline btn-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </td>
-            <Payment isOpen={modal} closeModal={closeModal} selectedClass={selectedClass} />
         </tr>
     );
 };

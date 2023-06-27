@@ -5,7 +5,6 @@ import './checkoutForm.css'
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 
@@ -19,6 +18,7 @@ const CheckoutForm = ({ selectedClass, closeModal }) => {
     const [cardError, setCardError] = useState("");
     const [clientSecret, setClientSecret] = useState("");
     const [processing, setProcessing] = useState(false);
+    console.log(selectedClass);
 
     useEffect(() => {
         if (selectedClass.price > 0) {
@@ -28,7 +28,7 @@ const CheckoutForm = ({ selectedClass, closeModal }) => {
                     setClientSecret(res.data.clientSecret);
                 });
         }
-    }, [selectedClass, axiosSecure]);
+    }, [selectedClass]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
